@@ -12,26 +12,28 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class ListMahasiswa extends AppCompatActivity {
-    ListView listView;
+    ListView listView; //membuat variable list view
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_mahasiswa);
-        setTitle("AsyncTask"); //set title pada tampilan layar
-        listView = (ListView) findViewById(R.id.list_view); //memanggil atribut yang ada di layout
+        setTitle("AsyncTask"); //set title yaitu AsyncTask
+        listView = (ListView) findViewById(R.id.list_view); //memanggil atribut yang ada di layout List Mahasiswa
     }
 
+    //untuk memulai AsyncTask
     public void startTask(View view) {
         new myTask(listView).execute();
     }
     class myTask extends AsyncTask<String, Integer, String> {
+
         ListView listView;
         ArrayAdapter adapter;
         ArrayList<String> listName;
         ProgressDialog progress;
 
-        //constructor saat asynctask diinisialisasi
+        //constructor saat asynctask di inisialisasi
         public myTask (ListView listMhs) {
             this.listView = listMhs;
             progress = new ProgressDialog(ListMahasiswa.this);
@@ -42,17 +44,18 @@ public class ListMahasiswa extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            //menampilkan proses dialog
+
+            //untuk menampilkan progress dialog
             progress.setTitle("Loading Data");
             progress.setIndeterminate(true);
             progress.setProgress(0);
             progress.setMax(100);
-            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER); //membuat progress dialog dengan style spinner
             progress.setCancelable(true);
             progress.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel Process", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    progress.dismiss();
+                    progress.dismiss(); //ketika button cancel di klik maka akan menghentikan proses
                     myTask.this.cancel(true);
                 }
             });
@@ -67,15 +70,17 @@ public class ListMahasiswa extends AppCompatActivity {
 
             //menyimpan array pada sebuah variabel
             String[] mahasiswa = getResources().getStringArray(R.array.namaMhs);
-            //perulangan untuk menyimpan array
+
+            //perulangan untuk menyimpan array nama mahasiswa
             for (int m = 0; m < mahasiswa.length; m++) {
                 final long persen = 100L * m / mahasiswa.length;
                 final String nama = mahasiswa[m];
+
                 try {
                     Runnable change = new Runnable() {
                         @Override
                         public void run() {
-                            progress.setMessage((int) persen+"% - Adding "+nama);
+                            progress.setMessage((int) persen+"% - Adding "+nama); //menampilkan persenan dengan nama ketika pada progress dialog
                         }
                     };
                     runOnUiThread(change);
@@ -88,7 +93,7 @@ public class ListMahasiswa extends AppCompatActivity {
             return null;
         }
 
-        //method sesudah asynctask sudah dijalankan
+        //method ketika asynctask sudah dijalankan
         @Override
         protected void onPostExecute(String hasil) {
             super.onPostExecute(hasil);

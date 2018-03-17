@@ -11,11 +11,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("AsyncTask");
+        setTitle("AsyncTask"); //set title menjadi AsyncTask
     }
 
     public void mahasiswa(View view) {
-        //untuk berpindah ke aktivitas mahasiswa//
+
+        //ketika button di klik, maka akan berpindah ke ListMahasiswa class
         Intent a = new Intent(this, ListMahasiswa.class);
         startActivity(a);
 
@@ -23,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gambar(View view) {
-
-        //untuk berpindah ke aktivitas mahasiswa//
+        //ketika button di klik, maka akan berpindah ke CariGambar class
         Intent b = new Intent(this, CariGambar.class);
         startActivity(b);
     }

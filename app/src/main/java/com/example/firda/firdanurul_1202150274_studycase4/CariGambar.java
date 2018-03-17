@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 
 public class CariGambar extends AppCompatActivity {
-    ImageView gmbr;
-    EditText sumber;
+    ImageView gmbr; //set variabel untuk ImageView
+    EditText sumber; //set variabel untuk EditText
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class CariGambar extends AppCompatActivity {
         setContentView(R.layout.activity_cari_gambar);
         setTitle("AsyncTask"); //set title pada tampilan
 
-        //memanggil variabel yang ada pada layout
+        //memanggil variabel yang ada pada layout CariGambar
         sumber = (EditText) findViewById(R.id.editText);
         gmbr = (ImageView) findViewById(R.id.image);
 
@@ -26,6 +26,7 @@ public class CariGambar extends AppCompatActivity {
 
     public void cariGambar(View view) {
 
+        //untuk loading gambar dan nantinya akan disimpan di image view
         Picasso.with(CariGambar.this).load(sumber.getText().toString()).placeholder(R.mipmap.ic_launcher_round).error(R.mipmap.ic_launcher).into(gmbr);
     }
 }
