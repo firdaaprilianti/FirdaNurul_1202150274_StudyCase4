@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">FirdaNurul_1202150274_StudyCase4</string>
+    <string-array name="namaMhs">
+        <item>Kim Minseok</item>
+        <item>Kim Junmyeon</item>
+        <item>Kim Jongdae</item>
+        <item>Kim Jongin</item>
+        <item>Byun Baekhyun</item>
+        <item>Do Kyungsoo</item>
+        <item>Park Chanyeol</item>
+        <item>Oh Sehun</item>
+        <item>Zhang Yixing</item>
+        <item>Kang Seungyoon</item>
+        <item>Im Yoona</item>
+
+    </string-array>
+</resources>
